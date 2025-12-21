@@ -34,3 +34,5 @@ lm_pedras |> performance::check_model(check = c("qq",
 ## Avalaindo o modelo ----
 
 lm_pedras |> summary()
+
+## Gráfiico ----
