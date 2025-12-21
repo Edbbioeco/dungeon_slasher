@@ -25,6 +25,8 @@ usethis::use_git_remote(name = "origin",
 
 # Sincronizando os arquivos ----
 
-# no terminal: git pull origin main --allow-unrelated-histories
+usethis::git_default_branch_rename(from = "master", to = "main")
 
-# no terminal: git push -u origin main
+gert::git_add(".")
+gert::git_commit("Primeiro commit do projeto")
+gert::git_push()
