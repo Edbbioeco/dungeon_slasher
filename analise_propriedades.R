@@ -6,6 +6,8 @@ library(tidyverse)
 
 library(performance)
 
+library(ggview)
+
 # Dados ----
 
 ## Importando ----
