@@ -15,6 +15,8 @@ usethis::create_github_token()
 
 usethis::use_git()
 
+usethis::use_github_links()
+
 # Setando o repositório ----
 
 usethis::use_git_remote(name = "origin",
