@@ -27,6 +27,10 @@ usethis::use_git_remote(name = "origin",
 
 usethis::git_default_branch_rename(from = "master", to = "main")
 
+# Commit ----
+
 gert::git_add(".")
+
 gert::git_commit("Primeiro commit do projeto")
+
 gert::git_push()
