@@ -29,8 +29,8 @@ usethis::git_default_branch_rename(from = "master", to = "main")
 
 # Commit ----
 
-gert::git_add(".")
+gert::git_add("configurando_github.R")
 
-gert::git_commit("Primeiro commit do projeto")
+gert::git_commit("Commit para alterar o README")
 
 gert::git_push()
