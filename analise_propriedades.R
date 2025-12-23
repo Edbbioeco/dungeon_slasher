@@ -31,6 +31,8 @@ dados |> dplyr::glimpse()
 dados %<>%
   tidyr::drop_na()
 
+dados
+
 # ANCOVA do efeito do tipo de partida nas pedras de respiro ----
 
 ## Criando o modelo ----
@@ -61,17 +63,18 @@ tabelaestatisticas <- summary$coefficients |>
   tibble::rownames_to_column() |>
   tibble::as_tibble() |>
   dplyr::filter(!rowname |> stringr::str_detect("Intercept")) |>
-  dplyr::mutate(Tipo = 1.45,
-                `Valores Totais` = c(140000,
-                                  130000,
-                                  120000),
+  dplyr::mutate(rowname = rowname |> stringr::str_remove_all("`"),
+                Tipo = 0.425,
+                `Valores Totais` = c(142500,
+                                  132500,
+                                  122500),
                 `Quantidade de estagios` = NA,
                 estatistica = paste0(rowname,
-                                     ": β1 ± SE = ",
+                                     ":<br>β1 ± SE = ",
                                      Estimate |> round(2),
                                      " ± ",
                                      `Std. Error` |> round(2),
-                                     ", t = ",
+                                     ",<br>t = ",
                                      `t value` |> round(2),
                                      ", p = ",
                                      `Pr(>|t|)` |> round(2))) |>
@@ -97,10 +100,13 @@ f_global
 dados |>
   ggplot(aes(Tipo, `Valores Totais`, fill = `Quantidade de estagios`)) +
   ggbeeswarm::geom_quasirandom(shape = 21, stroke = 1, size = 5) +
-  geom_text(data = tabelaestatisticas,
-            aes(Tipo, `Valores Totais`, label = estatistica),
-            size = 4.5,
-            fontface = "bold") +
+  ggtext::geom_richtext(data = tabelaestatisticas,
+                        aes(Tipo, `Valores Totais`, label = estatistica),
+                        fontface = "bold",
+                        fill = NA,
+                        size = 6.5,
+                        hjust = 0,
+                        label.color = NA) +
   scale_fill_viridis_c(guide = guide_colourbar(title.hjust = 0.5,
                                                barheight = 20)) +
   labs(title = f_global) +
