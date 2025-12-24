@@ -90,7 +90,7 @@ f_global <- paste0("F<sub>",
                    summary$fstatistic[[3]],
                    "</sub> = ",
                    summary$fstatistic[[1]] |> round(2),
-                   ", p < 0.05, R² = ",
+                   ", p < 0.001, R² = ",
                    summary$adj.r.squared |> round(2))
 
 f_global
@@ -104,7 +104,7 @@ dados |>
                         aes(Tipo, `Valores Totais`, label = estatistica),
                         fontface = "bold",
                         fill = NA,
-                        size = 6.5,
+                        size = 6,
                         hjust = 0,
                         label.color = NA) +
   scale_fill_viridis_c(guide = guide_colourbar(title.hjust = 0.5,
