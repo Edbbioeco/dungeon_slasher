@@ -104,11 +104,17 @@ dados |>
                         aes(Tipo, `Valores Totais`, label = estatistica),
                         fontface = "bold",
                         fill = NA,
-                        size = 6,
+                        size = 5,
                         hjust = 0,
                         label.color = NA) +
-  scale_fill_viridis_c(guide = guide_colourbar(title.hjust = 0.5,
-                                               barheight = 20)) +
+  scale_fill_viridis_c(guide = guide_colourbar(title.position = "top",
+                                               title.hjust = 0.5,
+                                               barwidth = 25,
+                                               frame.colour = "black",
+                                               frame.linewidth = 1,
+                                               ticks.colour = "black",
+                                               ticks.linewidth = 1),
+                       breaks = seq(15, 24, 1)) +
   labs(title = f_global) +
   ggview::canvas(height = 10, width = 12) +
   theme_classic() +
@@ -116,5 +122,6 @@ dados |>
         axis.title = element_text(color = "black", size = 17.5),
         legend.text = element_text(color = "black", size = 17.5),
         legend.title = element_text(color = "black", size = 17.5),
-        plot.title = ggtext::element_markdown(color = "black", size = 17.5))
+        legend.position = "bottom",
+        plot.title = ggtext::element_markdown(color = "black", size = 20),)
 
