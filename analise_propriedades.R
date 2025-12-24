@@ -42,6 +42,10 @@ lm_pedras <- lm(`Valores Totais` ~ Tipo * `Quantidade de estagios`,
 
 ## Pressupostos do modelo ----
 
+lm_pedras |> performance::check_heteroscedasticity()
+
+lm_pedras |> performance::check_normality()
+
 lm_pedras |> performance::check_model(check = c("qq",
                                                 "normality",
                                                 "homogeneity"))
