@@ -127,5 +127,5 @@ dados |>
         legend.text = element_text(color = "black", size = 17.5),
         legend.title = element_text(color = "black", size = 17.5),
         legend.position = "bottom",
-        plot.title = ggtext::element_markdown(color = "black", size = 20),)
+        plot.title = ggtext::element_markdown(color = "black", size = 20))
 
