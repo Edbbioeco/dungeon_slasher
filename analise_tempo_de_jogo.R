@@ -53,6 +53,21 @@ lm_pedras |>
 
 ## Gráfico ----
 
+### Estatística do modelo global ----
+
+f_global <- paste0("F<sub>",
+                   summary$fstatistic[[2]],
+                   ", ",
+                   summary$fstatistic[[3]],
+                   "</sub> = ",
+                   summary$fstatistic[[1]] |> round(2),
+                   ", p = 0.054, R² = ",
+                   summary$adj.r.squared |> round(2))
+
+f_global
+
+### Gráfico ----
+
 dados |>
   ggplot(aes(Tempo, `Valores Totais`, fill = Tipo, color = Tipo)) +
   geom_point(shape = 21, stroke = 1, color = "black", size = 5) +
@@ -62,6 +77,7 @@ dados |>
                                "forestgreen")) +
   scale_color_manual(values = c("orangered",
                                 "forestgreen")) +
+  labs(title = f_global) +
   ggview::canvas(height = 10, width = 12) +
   theme_classic() +
   theme(axis.text = element_text(color = "black", size = 20),
