@@ -61,7 +61,7 @@ f_global <- paste0("F<sub>",
                    summary$fstatistic[[3]],
                    "</sub> = ",
                    summary$fstatistic[[1]] |> round(2),
-                   ", p = 0.054, R² = ",
+                   ", p = < 0.01, R² = ",
                    summary$adj.r.squared |> round(2))
 
 f_global
