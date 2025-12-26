@@ -57,7 +57,7 @@ lm_pedras |>
 
 ## Gráfiico ----
 
-## Estatísticas das variáveis ----
+### Estatísticas das variáveis ----
 
 summary <- lm_pedras |>
   summary()
@@ -86,7 +86,7 @@ tabelaestatisticas <- summary$coefficients |>
 
 tabelaestatisticas
 
-## Estatística do modelo global ----
+### Estatística do modelo global ----
 
 f_global <- paste0("F<sub>",
                    summary$fstatistic[[2]],
@@ -99,7 +99,7 @@ f_global <- paste0("F<sub>",
 
 f_global
 
-## Gráfico ----
+### Gráfico ----
 
 dados |>
   ggplot(aes(Tipo, `Valores Totais`, fill = `Quantidade de estagios`)) +
