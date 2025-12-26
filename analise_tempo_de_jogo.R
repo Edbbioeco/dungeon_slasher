@@ -74,3 +74,36 @@ dados |>
         strip.text = element_text(color = "black", size = 20))
 
 # Efeito do tipo de estágio no tempo de jogo ----
+
+## Tratando os dados ----
+
+dados_trat <- dados |>
+  dplyr::mutate(Tempo = c(Tempo |> lubridate::hour() * 60 +
+                            Tempo |> lubridate::minute() +
+                            Tempo |> lubridate::second() / 60))
+
+dados_trat
+
+dados_trat |> dplyr::glimpse()
+
+## Criando o modelo ----
+
+lm_tempo_tipo <- lm(Tempo ~ Tipo,
+                    data = dados_trat)
+
+## Pressupostos do modelo ----
+
+lm_tempo_tipo |> performance::check_heteroscedasticity()
+
+lm_tempo_tipo |> performance::check_normality()
+
+lm_tempo_tipo |> performance::check_model(check = c("qq",
+                                                    "normality",
+                                                    "homogeneity"))
+
+## Avalaindo o modelo ----
+
+lm_tempo_tipo |>
+  summary()
+
+## Gráfico ----
